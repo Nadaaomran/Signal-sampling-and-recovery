@@ -22,6 +22,160 @@ class Ui_MainWindow(object):
         MainWindow.resize(764, 569)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        style_sheet = """
+    QWidget#centralwidget {
+        background-color: #f0f0f0; /* Default off-white background */
+        color: black; /* Default text color */
+    }
+
+    QPushButton {
+        border: 1px solid #888;
+        border-radius: 5px;
+        background-color: #d3d3d3;
+        color: black;
+        padding: 5px;
+    }
+    QPushButton:hover {
+        background-color: #c0c0c0;
+    }
+    QPushButton:pressed {
+        background-color: #a9a9a9;
+    }
+
+    QComboBox {
+        border: 1px solid #888;
+        border-radius: 5px;
+        background-color: #d3d3d3;
+        color: black;
+        padding: 1px 18px 1px 3px;
+        min-width: 6em;
+    }
+    QComboBox:editable {
+        background: white;
+    }
+    QComboBox:!editable, QComboBox::drop-down:editable {
+        background: #d3d3d3;
+    }
+    QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+        background: #c0c0c0;
+    }
+    QComboBox::drop-down {
+        subcontrol-origin: padding;
+        subcontrol-position: top right;
+        width: 15px;
+        border-left: none;
+    }
+    QComboBox::down-arrow {
+        width: 15px;
+        height: 15px;
+    }
+
+    QSlider::groove:horizontal, QSlider::groove:vertical {
+        border: 1px solid #888;
+        background: #d3d3d3;
+        border-radius: 5px;
+    }
+    QSlider::groove:horizontal {
+        height: 8px;
+        margin: 2px 0;
+    }
+    QSlider::groove:vertical {
+        width: 8px;
+        margin: 0 2px;
+    }
+    QSlider::handle:horizontal, QSlider::handle:vertical {
+        background: white;
+        border: 1px solid #888;
+        border-radius: 5px;
+    }
+    QSlider::handle:horizontal {
+        width: 18px;
+        margin: -2px 0;
+    }
+    QSlider::handle:vertical {
+        height: 18px;
+        margin: 0 -2px;
+    }
+
+    QCheckBox {
+        spacing: 5px;
+        color: black;
+    }
+    QCheckBox::indicator {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #888;
+        border-radius: 3px;
+        background: #d3d3d3;
+    }
+    QCheckBox::indicator:checked {
+        background: #b1b1b1;
+    }
+
+    QRadioButton {
+        spacing: 5px;
+        color: black;
+    }
+    QRadioButton::indicator {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #888;
+        border-radius: 7px;
+        background: #d3d3d3;
+    }
+    QRadioButton::indicator:checked {
+        background: #b1b1b1;
+    }
+
+    QLabel {
+        color: black;
+    }
+
+    QGroupBox {
+        border: 1px solid #888;
+        border-radius: 5px;
+        margin-top: 6px;
+        background-color: #d3d3d3;
+    }
+    QGroupBox::title {
+        subcontrol-origin: margin;
+        subcontrol-position: top left;
+        padding: 0 3px;
+        color: black;
+    }
+
+    PlotWidget {
+        background-color: #d3d3d3;
+        border: 1px solid #888;
+    }
+    QTabWidget::pane { 
+        border: 1px solid #888;
+        background-color: #d3d3d3;
+        border-radius: 5px;
+    }
+    QTabWidget::tab-bar {
+        left: 5px; 
+    }
+
+    QTabBar::tab {
+        background: #d3d3d3;
+        border: 1px solid #888;
+        padding: 10px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+    }
+    QTabBar::tab:selected {
+        background: #c0c0c0;
+        margin-bottom: -1px;
+    }
+    QTabBar::tab:!selected {
+        background: #d3d3d3;
+    }
+    QTabBar::tab:hover {
+        background: #b1b1b1;
+    }
+"""
+        self.centralwidget.setStyleSheet(style_sheet)
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -323,9 +477,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.composer_tap, "")
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        
 
         #A list to carry all the mixed signals prepared by the composer
         self.Mixed_signals=[]
